@@ -4,6 +4,9 @@ import uuid
 import re
 from docx import Document
 
+# Portions gratefully appropriated from https://github.com/JStrydhorst/pubmed-to-word 
+# TODO - Pare down cloned code to just necessary parsing
+
 def parse_nbib(lines):
   # reads the lines of text until it finds a tag in the first four columns, then
   # concatenates the values until the start of the next tag
@@ -75,16 +78,15 @@ def import_sources(filename):
   tree = ET.ElementTree(sources)
   tree.write('sources.xml',encoding="utf-8",xml_declaration=True)
 
-# Extract data
+# EXTRACT DATA
 import_sources("citations.nbib")
 
-# Format data
+# FORMAT DATA
 
-
-
-# Export to doc
+# EXPORT DATA
 document = Document('CA_Template.docx')
 # add info to template here
+#TODO - Look into exporting under individual headings in doc rather than having to recreate doc completely
 
 document.save('output.docx') #TODO - Automate this to have the current date as the filename
 
