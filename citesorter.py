@@ -96,7 +96,10 @@ def import_sources(filename):
   tree.write('sources.xml',encoding="utf-8",xml_declaration=True)
 
 # EXTRACT DATA
-#import_sources("citations.nbib")
+try:
+  import_sources("citations.nbib")
+except IOError as e: # TODO - test this
+  print("Something broke!")
 
 # FORMAT DATA
 # sorting based on keywords will go here probably
